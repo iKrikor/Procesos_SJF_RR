@@ -27,25 +27,28 @@ bool compDouble(double a, double b);
 
 int main(int argc, const char * argv[]) {
 
-    
+    //Estructura de lista para la cola ordenada (para poder iterar sobre ella)
     std::list<Process> process_queue;
+    //Estructura de cola para los procesos iniciales
     std::queue<Process> process_start;
+    //Guardamos los procesos terminados ya que el tiempo de espera se almacena en ellos
     std::vector<Process> terminados;
     double quantum;
     double time=0;
     Process excecuting;
     excecuting.duration=0;
     
+    //Funcion que lee del archivo
     getProcess(process_start, quantum);
     
-    
-    while ((!process_start.empty() || !process_queue.empty()))
+    //El ciclo no acaba hasta que las dos colas estén libres
+    while (!process_start.empty() || !process_queue.empty())
     {
-//        std::cout<<" "<<time;
-        
+        //Si la cola inicial está vacia se revisa cuando acaba el proceso y se pone a ejecutar el siguiente
         if (process_start.empty())
         {
             if (compDouble(excecuting.duration,0)) {
+                //Se guarda el que se terminó de ejecutar, se imprime el tiempo en que acabó y se saca el siguiente de la cola.
                 terminados.push_back(excecuting);
                 std::cout<<" "<<time<<" "<<std::flush;
                 excecuting=process_queue.front();
@@ -53,13 +56,18 @@ int main(int argc, const char * argv[]) {
                 std::cout<<"||"<<" "<<time<<" "<<std::flush;
                 std::cout<<excecuting.id<<std::flush;
             }
+            //Si la cola inicial no está vacía, verificamos que la cola de procesos no esté vacía
         } else if (!process_queue.empty())
         {
+            //Si se terminó de ejecutar un proceso
             if (compDouble(excecuting.duration,0))
             {
+                //Lo guardamos
                 terminados.push_back(excecuting);
+                //Vemos si ya llegó uno nuevo
                 if (compDouble(process_start.front().arrival,time))
                 {
+                    //Si es menor lo ejecutamos, si no lo ponemos en la cola y ejecutamos el primero de la cola.
                     if (process_start.front()<process_queue.front())
                     {
                         std::cout<<" "<<time<<" "<<std::flush;
@@ -81,14 +89,17 @@ int main(int argc, const char * argv[]) {
                     }
                 } else
                 {
+                    //Si no llega ningun proceso cuando se termina de ejecutar uno, ejecutamos el siguiente
                     std::cout<<" "<<time<<" "<<std::flush;
                     excecuting=process_queue.front();
                     process_queue.pop_front();
                     std::cout<<"||"<<" "<<time<<" "<<std::flush;
                     std::cout<<excecuting.id<<std::flush;
                 }
+                //Si llega un proceso mientras se ejecuta el otro.
             } else if (compDouble(process_start.front().arrival,time))
             {
+                //Revisamos cual de entre el que se ejecuta, el menor de la cola o el que acaba de llegar es menor y se ejecuta este. Poniendo en la cola los demás.
                 if (process_start.front()<process_queue.front() && process_start.front()<excecuting)
                 {
                     nextArrives(process_queue, excecuting);
@@ -117,10 +128,13 @@ int main(int argc, const char * argv[]) {
                     
                 }
             }
+            //Si la cola que tiene procesos está vacía
         } else {
+            //Si se termina de ejecutar un proceso, lo gurardamos
             if (compDouble(excecuting.duration,0))
             {
                 terminados.push_back(excecuting);
+                //Vemos si llegó uno nuevo y lo corremos, si no se imprime que no hay más procesos.
                 if (compDouble(process_start.front().arrival,time)) {
                     std::cout<<" "<<time<<" "<<std::flush;
                     excecuting = process_start.front();
@@ -133,6 +147,7 @@ int main(int argc, const char * argv[]) {
                     std::cout<<"||"<<" "<<time<<" "<<std::flush;
                     std::cout<<"No process"<<std::flush;
                 }
+                //Si se está ejecutando un proceso y llega uno nuevo, se ve el menor y se ejecuta. El otro se pone en la cola
             }else if (compDouble(process_start.front().arrival,time))
             {
                 if (process_start.front()<excecuting) {
@@ -150,21 +165,25 @@ int main(int argc, const char * argv[]) {
                 }
             }
         }
-
+        
+        //Se incrementa el tiempo de 0.1 en 0.1 segundos
         time+=0.1;
+        //Función que incrementa el tiempo de espera de los procesos en la cola
         incrementWait(process_queue);
+        //Le quita 0.1 al tiempo de ejecución.
         excecuting.duration-=0.1;
         
     }
     
 
     
-    
+    //Agrega el tiempo que quedó por ejecutarse del ultimo proceso
     std::cout<<" "<<time+excecuting.duration<<"||"<<std::endl;
     
-
+    //Lo guarda
      terminados.push_back(excecuting);
     
+    //Cuenta el tiempo de espera y saca el promedio
     double wait;
     int c=0;
     for(auto i: terminados){
@@ -177,6 +196,7 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
+//Compara double para quitar la limitante de que no son exactos
 bool compDouble(double a, double b){
     if (fabs(a-b) <1e-4) {
         return true;
@@ -185,7 +205,7 @@ bool compDouble(double a, double b){
     }
 }
 
-
+//Función que separa strings y las guarda en vectores
 std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems)
 {
     std::stringstream ss(s);
@@ -204,6 +224,8 @@ std::vector<std::string> split(const std::string &s, char delim)
     return elems;
 }
 
+
+//Funcion que agrega elementos a la cola de manera ordenada
 void nextArrives(std::list<Process> & process_queue, Process & next)
 {
     
@@ -226,6 +248,7 @@ void nextArrives(std::list<Process> & process_queue, Process & next)
     }
 }
 
+//Función que aumenta el tiempo de espera
 void incrementWait(std::list<Process> & process_queue){
     
     if (!process_queue.empty())
@@ -237,6 +260,7 @@ void incrementWait(std::list<Process> & process_queue){
         }
     }
 }
+
 
 
 void getProcess(std::queue<Process> & process_start, double & quantum){

@@ -11,12 +11,13 @@
 #include <string>
 
 
+//Clase proceso con su constructor y overload de los operadores logicos
 class Process {
     public:
     std::string id;
     double arrival;
     double duration;
-    double wait;
+    double wait=0;
     
     Process(){};
     Process(std::string _id, double _arrival, double _duration);
@@ -28,6 +29,7 @@ class Process {
     bool operator>=(const Process & p)const;
     bool operator<=(const Process & p)const;
     
+    //Función que imprime el nombre y le tiempo de espera y regresa este ultimo
     double print() const;
     
 };
