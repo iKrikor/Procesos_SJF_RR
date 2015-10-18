@@ -39,7 +39,7 @@ int main(int argc, const char * argv[]) {
     getProcess(process_start, quantum);
     
     
-    while (!process_start.empty() || !process_queue.empty())
+    while ((!process_start.empty() || !process_queue.empty()))
     {
 //        std::cout<<" "<<time;
         
@@ -58,7 +58,7 @@ int main(int argc, const char * argv[]) {
             if (compDouble(excecuting.duration,0))
             {
                 terminados.push_back(excecuting);
-                if (process_start.front().arrival==time)
+                if (compDouble(process_start.front().arrival,time))
                 {
                     if (process_start.front()<process_queue.front())
                     {
@@ -154,11 +154,16 @@ int main(int argc, const char * argv[]) {
         time+=0.1;
         incrementWait(process_queue);
         excecuting.duration-=0.1;
-
-        
         
     }
-    std::cout<<" "<<time<<"||"<<std::endl;
+    
+
+    
+    
+    std::cout<<" "<<time+excecuting.duration<<"||"<<std::endl;
+    
+
+     terminados.push_back(excecuting);
     
     double wait;
     int c=0;
@@ -173,7 +178,7 @@ int main(int argc, const char * argv[]) {
 }
 
 bool compDouble(double a, double b){
-    if (fabs(a-b) <1e-2) {
+    if (fabs(a-b) <1e-4) {
         return true;
     }else{
         return false;

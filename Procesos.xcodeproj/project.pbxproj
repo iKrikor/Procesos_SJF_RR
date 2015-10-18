@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		F10349901BD0AC5600747DCA /* Procesos */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Procesos; sourceTree = BUILT_PRODUCTS_DIR; };
-		F10349931BD0AC5600747DCA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F10349931BD0AC5600747DCA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; usesTabs = 0; };
 		F103499A1BD0AC6A00747DCA /* Process.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Process.cpp; sourceTree = "<group>"; };
 		F103499D1BD0ACBE00747DCA /* Process.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Process.h; sourceTree = "<group>"; };
 		F103499E1BD0AF4000747DCA /* procesos.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = procesos.txt; sourceTree = "<group>"; };
@@ -243,6 +243,7 @@
 				F10349991BD0AC5600747DCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -26,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Procesos/main.cpp"
-            timestampString = "466896363.503291"
+            timestampString = "466897283.911991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "getProcess(std::queue&lt;Process&gt; &amp; process_start, double &amp; quantum)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Procesos/main.cpp"
+            timestampString = "466897549.728079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
