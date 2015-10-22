@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F10349941BD0AC5600747DCA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10349931BD0AC5600747DCA /* main.cpp */; };
 		F103499C1BD0AC6A00747DCA /* Process.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F103499A1BD0AC6A00747DCA /* Process.cpp */; settings = {ASSET_TAGS = (); }; };
+		F1396F2E1BD542EE005CFCA8 /* SJF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1396F2C1BD542EE005CFCA8 /* SJF.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,8 @@
 		F103499A1BD0AC6A00747DCA /* Process.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Process.cpp; sourceTree = "<group>"; };
 		F103499D1BD0ACBE00747DCA /* Process.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Process.h; sourceTree = "<group>"; };
 		F103499E1BD0AF4000747DCA /* procesos.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = procesos.txt; sourceTree = "<group>"; };
+		F1396F2B1BD54258005CFCA8 /* SJF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJF.h; sourceTree = "<group>"; };
+		F1396F2C1BD542EE005CFCA8 /* SJF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SJF.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				F10349931BD0AC5600747DCA /* main.cpp */,
+				F1396F2B1BD54258005CFCA8 /* SJF.h */,
+				F1396F2C1BD542EE005CFCA8 /* SJF.cpp */,
 				F103499D1BD0ACBE00747DCA /* Process.h */,
 				F103499A1BD0AC6A00747DCA /* Process.cpp */,
 				F103499E1BD0AF4000747DCA /* procesos.txt */,
@@ -125,6 +130,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1396F2E1BD542EE005CFCA8 /* SJF.cpp in Sources */,
 				F10349941BD0AC5600747DCA /* main.cpp in Sources */,
 				F103499C1BD0AC6A00747DCA /* Process.cpp in Sources */,
 			);
